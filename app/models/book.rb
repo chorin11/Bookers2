@@ -4,5 +4,5 @@ class Book < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  belogs_to: user
+  belongs_to :user
 end

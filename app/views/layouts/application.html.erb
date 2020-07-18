@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2</title>
+    <title>Bookers</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,43 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #222">
+      <a class="navbar-brand" href="#">Bookers</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+      </button>
+
+    <% if user_signed_in? %>
+    <ul class="nav" style="list-style: none;">
+      <div class="nav-list" style="display: inline-block;"
+        <li><%= link_to "Home", '/users/edit'%></li>
+        <li><%= link_to "Users", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "Books", books_path, class: 'post' %></li>
+        <li><%= link_to "logout", new_user_registration_path, class: 'post' %></li>
+      </div>
+    </ul>
+    <% else %>
+    <ul class="nav-list" style="list-style: none;">
+      <div class="nav-list" style="display: inline-block;">
+        <li><%= link_to "Home",'/layouts/apprication'%></li>
+        <li><%= link_to "About", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "sign up", new_user_registration_path, class: 'post' %></li>
+        <li><%= link_to "login", new_user_registration_path, class: 'post' %></li>
+      </div>
+    </ul>
+    </nav>
+  <% end %>
+
+  <h1>welcome to Bookers!!</h1>
+    <p>
+      In Bookers,<br>
+      you can shere and exchange your opinions,and emotions<br>
+      about various books!
+
+    <div><%= link_to "Log in",user_session_path, class: "btn btn-info btn-lg btn-block" %></div>
+    <div><%= link_to "Sign Up",new_user_session_path, class: "btn btn-success btn-lg btn-block" %></div>
+
     <%= yield %>
   </body>
 </html>
