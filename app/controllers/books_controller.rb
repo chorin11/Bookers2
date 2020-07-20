@@ -1,5 +1,8 @@
 class BooksController < ApplicationController
 
+	def home
+	end
+
 	def new
 		@book = Book.new
 	end
@@ -11,6 +14,7 @@ class BooksController < ApplicationController
 	end
 
 	def index
+		@book = Book.find(params[:id])
 	end
 
 	def edit
@@ -29,7 +33,7 @@ class BooksController < ApplicationController
  		redirect_to books_path
 	end
 
-	praivate
+	private
 	def blog_params
 		params.repuire(:blog).permit(:title, :body)
 	end

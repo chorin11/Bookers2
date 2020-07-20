@@ -1,16 +1,23 @@
-<header>
-<% if user_signed_in? %>
-	<ul>
-		<li><%= link_to "Home", new_user_registration %></li>
-		<li><%= link_to "Users", destroy_user_session_path, method: :delete %></li>
-		<li><%= link_to "Books", books_path, class: 'post' %></li>
-		<li><%= link_to "logout", new_user_registration_path, class: 'post' %></li>
-	</ul>
-<% else %>
-	<ul>
-		<li><%= link_to "Home", new_user_registration %></li>
-		<li><%= link_to "About", destroy_user_session_path, method: :delete %></li>
-		<li><%= link_to "sign up", new_user_registration_path, class: 'post' %></li>
-		<li><%= link_to "login", new_user_registration_path, class: 'post' %></li>
-	</ul>
-<% end %>
+<h1>Users</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>image</th><th>name</th>
+		</tr>
+	</thead>
+
+  <% @users.each do |user| %>
+    <tr>
+     <div>
+      <td><%= user.image %></td>
+     </div>
+     <div>
+    	<td><%= user.name %></td>
+     </div>
+      <span>
+      <td><%=link_to "Show" ,users_path(@user.id) %></td>
+      </span>
+    </tr>
+  <% end %>
+</table>
