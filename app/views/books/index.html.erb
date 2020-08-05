@@ -28,8 +28,10 @@
       <h2>Books</h2>
         <table class="table table-hover table-inverse">
     	   <thead>
-    		    <tr>
-    			   <th>Title</th><th>Opinion</th>
+            <tr>
+             <th></th>
+             <th>Title</th>
+             <th>Opinion</th>
     		    </tr>
     	   </thead>
 
@@ -47,6 +49,7 @@
             <div>
           	 <td><%= book.body %></td>
             </div>
+            <td>コメント数：<%= book.book_comments.count %></td>
           </tr>
         <% end %>
       </table>

@@ -1,12 +1,13 @@
 class BooksController < ApplicationController
 	before_action :authenticate_user!
+	before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
 	def home
 	end
 
 	def create
 		@books = Book.all
-		@book = Book.new(book_params)
+		@book = Book.new
 		@user = current_user
 		@book.user_id = current_user.id
 		if @book.save
@@ -28,6 +29,8 @@ class BooksController < ApplicationController
 		@book = Book.find(params[:id])
 		@users = User.all
 		@user = @book.user
+		@book_comment = BookComment.new
+    @book_comments = @book.book_comments
 	end
 
 	def edit
