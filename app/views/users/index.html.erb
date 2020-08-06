@@ -44,6 +44,7 @@
             <span>
               <td><%=link_to "Show" ,user_path(user.id) %></td>
             </span>
+            <%= render ‘relationships/follow_button’, user: @user %>
           </tr>
         <% end %>
       </table>
