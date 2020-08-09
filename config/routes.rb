@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'home/about' => 'home#about'
 
   root "home#top"
+
+  get 'search' => 'searches#search'
+
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
